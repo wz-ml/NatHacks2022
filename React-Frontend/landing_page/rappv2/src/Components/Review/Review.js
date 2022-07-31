@@ -5,7 +5,8 @@ class Review extends Component {
     state = { 
   
       // Initially, no file is selected 
-      selectedFile: null
+      selectedFile: null,
+      prediction: null
     }; 
      
     // On file select (from the pop up) 
@@ -15,23 +16,28 @@ class Review extends Component {
     }; 
      
     // On file upload (click the upload button) 
-    onFileUpload = () => { 
+    onFileUpload = (e) => { 
+      e.preventDefault()
       // Create an object of formData 
       const formData = new FormData(); 
      
       // Update the formData object 
       formData.append( 
-        "myFile", 
-        this.state.selectedFile, 
-        this.state.selectedFile.name 
-      ); 
+        "data", 
+        this.state.selectedFile); 
      
       // Details of the uploaded file 
       console.log(this.state.selectedFile); 
      
       // Request made to the backend api 
       // Send formData object 
-      axios.post("api/uploadfile", formData); 
+      axios.post("http://127.0.0.1:5000/postcsv", formData).then((response) => {
+        
+        if (Math.round(response.data) === 2) {this.setState({prediction: "Positive"})}
+        if (Math.round(response.data) === 1) {this.setState({prediction: "Neutral"})}
+        if (Math.round(response.data) === 0) {this.setState({prediction: "Negative"})}
+
+      });
     }; 
      
     // File content to be displayed after 
@@ -64,18 +70,20 @@ class Review extends Component {
       return ( 
         <div> 
             <h1> 
-              GeeksforGeeks 
+              Upload Pipeline
             </h1> 
             <h3> 
               File Upload using React! 
             </h3> 
             <div> 
                 <input type="file" onChange={this.onFileChange} /> 
-                <button onClick={this.onFileUpload}> 
+                <button type="button" onClick={this.onFileUpload}> 
                   Upload! 
                 </button> 
+                <h3>Prediction: {this.state.prediction}</h3>
             </div> 
           {this.fileData()} 
+
         </div> 
       ); 
     } 

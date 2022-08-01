@@ -32,10 +32,17 @@ class Review extends Component {
       // Request made to the backend api 
       // Send formData object 
       axios.post("http://127.0.0.1:5000/postcsv", formData).then((response) => {
-        
+        if (response.data >= 1) {
+          this.setState({prediction: String(100* (response.data-1)) + "% positive, " + String(100 * (2 - response.data)) + "% neutral."})
+        }
+        else {
+          this.setState({prediction: String(100* (response.data)) + "% neutral, " + String(100 * (1 - response.data)) + "% negative."})
+        }
+        /*
         if (Math.round(response.data) === 2) {this.setState({prediction: "Positive"})}
         if (Math.round(response.data) === 1) {this.setState({prediction: "Neutral"})}
         if (Math.round(response.data) === 0) {this.setState({prediction: "Negative"})}
+        */
 
       });
     }; 

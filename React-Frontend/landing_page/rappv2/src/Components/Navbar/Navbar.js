@@ -16,7 +16,7 @@ function OffcanvasExample() {
       {[false].map((expand) => (
         <Navbar key={expand} bg="light" expand={expand} className="mb-3" style={{ boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.3)", }}>
           <Container fluid>
-            <Navbar.Brand href="#" style={{ fontSize: "25px", fontWeight: "bold", fontFamily: "Inter", color: "#536DFE", textAlign: "center" }}>mindMarket</Navbar.Brand>
+            <Navbar.Brand href="/" style={{ fontSize: "25px", fontWeight: "bold", fontFamily: "Inter", color: "#536DFE", textAlign: "center" }}>mindMarket</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -30,19 +30,19 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/home">Home</Nav.Link>
                   <Nav.Link href="/review">Review Content</Nav.Link>
                   <NavDropdown
-                    title="Dropdown"
+                    title="Find Us!"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                    <NavDropdown.Item href="#action3">Instagram</NavDropdown.Item>
                     <NavDropdown.Item href="#action4">
-                      Another action
+                    LinkedIn
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action5">
-                      Something else here
+                      Meet The Team
                     </NavDropdown.Item>
                   </NavDropdown>
                   <Button variant="danger" onClick={() => auth.signOut()} style={{

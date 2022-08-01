@@ -8,7 +8,8 @@ import "./Home.css"
 const Home = () => {
     return (
         <div>
-        <Navbar />
+                <Navbar/>
+
         <div style={{display:"flex", flexDirection: "row", alignContent: "center"}}>
         <div style={{marginTop:"10%", marginLeft:"10%" }}>
         <div className="typewriter">

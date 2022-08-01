@@ -5,6 +5,7 @@ import Login from './Components/Login/Login';
 import { auth } from './Components/firebase';
 import {BrowserRouter as Router, Switch, Route, Routes} from "react-router-dom"
 import Review from "./Components/Review/Review"
+import Navbar from "./Components/Navbar/Navbar"
 
 function App() {
   const [user, setUser] = useState(null)
@@ -26,9 +27,12 @@ function App() {
   return (
     <div className="App">
 
-      
       <Router>
         <Routes>
+        
+
+
+
           <Route path="/review" exact element={<Review/>} />
           <Route path="/" exact element={user ?  <Home /> : <Login />} />
 

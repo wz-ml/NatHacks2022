@@ -54,10 +54,11 @@ function Login() {
             boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
           }}
         >
+        <h3 style={{ fontSize: "35px", fontWeight: "bold", fontFamily: "Inter", color: "#536DFE", textAlign: "center" }}>mindMarket</h3>
           <Form.Label
             style={{
               fontWeight: "bold",
-              fontSize: "30px",
+              fontSize: "20px",
               color: "#536DFE",
               fontFamily:"Inter"
             }}
